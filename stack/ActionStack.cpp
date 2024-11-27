@@ -13,6 +13,11 @@ string ActionStack::get_NowAction()
 
 std::string ActionStack::undo()
 {
+    if (repeatAction.empty()) {
+        return "empty action";
+
+
+    }
     doneAction.push(repeatAction.top());
     repeatAction.pop();
     return doneAction.top();
@@ -20,6 +25,12 @@ std::string ActionStack::undo()
 
 std::string ActionStack::redo()
 {
+    if (doneAction.empty()) {
+        return "empty action";
+
+
+    }
+
     repeatAction.push(doneAction.top());
 
     doneAction.pop();

@@ -5,7 +5,7 @@
 #include "Mystack.h"
 #include <string>
 #include <stack>
-
+#include "ActionStack.h"
 using namespace std;
 int main()
 {
@@ -53,6 +53,33 @@ int main()
 
     }*/
 
+    ActionStack Ivan;
+    Ivan.performAction("Opened Folder");
+    Ivan.performAction("Copied file");
+    Ivan.performAction("deleted file");
+    while (true) {
+        string User;
+        cout << "1-cancel action"<<endl;
+        cout << "2-return action" << endl;
+        cout << "3-add action" << endl;
+        cin >> User;
+        if(User=="1"){
+            cout << Ivan.undo() << endl;
+
+        }
+        else if (User == "2") {
+            cout << Ivan.redo() << endl;
+
+
+        }
+        else if (User == "3") {
+            cout << "enter action"<<endl;
+            cin >> User;
+            Ivan.performAction(User);
+        }
+
+
+    }
 
 
 
