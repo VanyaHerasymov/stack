@@ -13,11 +13,15 @@ string ActionStack::get_NowAction()
 
 std::string ActionStack::undo()
 {
-
-    return std::string();
+    doneAction.push(repeatAction.top());
+    repeatAction.pop();
+    return doneAction.top();
 }
 
 std::string ActionStack::redo()
 {
-    return std::string();
+    repeatAction.push(doneAction.top());
+
+    doneAction.pop();
+    return repeatAction.top();
 }
